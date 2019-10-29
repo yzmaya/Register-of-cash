@@ -5,9 +5,33 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
-input[type=file].hidden {
-  color: transparent;
+.image-upload > input
+{
+    display: none;
 }
+
+.image-upload img
+{
+    width: 40px;
+    cursor: pointer;
+}
+body {
+        display: flex;
+        min-height: 100vh;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      #uploader {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 50%;
+        margin-bottom: 10px;
+      }
+      
 /* Basic */
 @-ms-viewport {
   width: device-width; }
@@ -255,8 +279,6 @@ hr {
 /* Button */
 input[type="submit"],
 input[type="reset"],
-input[type="button"],
-input[type="file"],
 button,
 .button {
   -moz-appearance: none;

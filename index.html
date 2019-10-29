@@ -12,6 +12,12 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+		
+		
+
+
 	</head>
 	<body class="is-preload">
 
@@ -29,7 +35,7 @@
 				<ul class="links">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="elements.html">Elements</a></li>
-					<li><a href="generic.html">Generic</a></li>
+					<li><a href="estado.html">Estado</a></li>
 				</ul>
 			</nav>
 
@@ -61,12 +67,23 @@
 					    </thead>
 					    <tbody>
 					      <tr>
-					        <td><input type="text" name="name" id="name" value="" placeholder="Concepto" /></td>
-					        <td><input type="text" name="name" id="name" value="" placeholder="Monto" /></td>
-					        <td><input type="file" class="button primary fit " name="adjunto" accept=".jpg,.png" ></</td>
+					        <td><input type="text"  id="concepto" value="" placeholder="Concepto" /></td>
+					        <td><input type="text"  id="monto" value="" placeholder="Monto" /></td>
+					        <td>
+								<div class="image-upload">
+									    <label for="fichero">
+									        <img src="http://files.softicons.com/download/toolbar-icons/mono-general-icons-3-by-custom-icon-design/png/256x256/camera.png" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >  Subir  Comprobante 
+									    </label>
+
+									    <input id="fichero" type="file"   />
+									</div>
+					        </td>
+
 					      </tr>
 					    </tbody>
 					  </table>
+					  <button class="btn btn-success" onclick="guardar()">Guardar</button>
+
 					</div>
 
 
@@ -132,22 +149,10 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script type="text/javascript" src="assets/js/app2.js"></script>
+			<script type="text/javascript" src="assets/js/app.js">
 
-	<script>
-         var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-         var f=new Date();
-         var fecha = (f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
-      
-         document.getElementById("demo").innerHTML = "Mis Gastos: " + fecha;
-
-         function agregarConcepto(){
-         	document.getElementById("tablaGastos").insertRow(-1).innerHTML = '<td><input type=text name=name id='+ '' +'  /></td><td><input type=text name=name id='+ '' +' /></td><td><input type=file class="button primary fit small" name=adjunto accept=.jpg,.png ></td><td></td>';
-
-
-
-					        
-         }
-	</script> 
+			</script>
 
 	</body>
 </html>
