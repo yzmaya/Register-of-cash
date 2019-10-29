@@ -29,17 +29,22 @@
     <input type="file" value="upload" id="fileButton" />
 
 
-    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
     <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyAkFY4FYBebWtMhLNU_eTk3YyBeybH4SHI",
-        authDomain: "realtime01-22595.firebaseapp.com",
-        databaseURL: "https://realtime01-22595.firebaseio.com",
-        storageBucket: "realtime01-22595.appspot.com",
-        messagingSenderId: "932316393961"
-      };
-      firebase.initializeApp(config);
+     
+      // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC7kBXyd1LcKq4JJiW-3JlhcBOJPtNucHM",
+    authDomain: "reco-2cabc.firebaseapp.com",
+    databaseURL: "https://reco-2cabc.firebaseio.com",
+    projectId: "reco-2cabc",
+    storageBucket: "reco-2cabc.appspot.com",
+    messagingSenderId: "775658028653",
+    appId: "1:775658028653:web:05fbc136e9d85bb9350964",
+    measurementId: "G-Q71KJZLVWE"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
       // Obtener Elementos
       var uploader = document.getElementById('uploader');
       var fileButton = document.getElementById('fileButton');
@@ -48,7 +53,7 @@
         //Obtener archivo
         var file = e.target.files[0];
         // Crear un storage ref
-        var storageRef = firebase.storage().ref('mis_fotos/' + file.name);
+        var storageRef = firebase.storage().ref('prueba/' + file.name);
         // Subir archivo
         var task = storageRef.put(file);
         // Actualizar barra progreso
