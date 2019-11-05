@@ -15,20 +15,63 @@
  
 
   var db = firebase.firestore();
-
+//obteniendo año mes y dia actual
 var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
          var f=new Date();
          var fecha = (f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
 
          var MesyAño = (meses[f.getMonth()] + " " + f.getFullYear());
          var dia = (f.getDate());
+
+//este script sube la información de la imagen al servidor
+ // Obtener Elementos
+      var uploader = document.getElementById('uploader');
+      var fileButton = document.getElementById('fileButton');
+
+      // Vigilar selección archivo
+      fileButton.addEventListener('change', function(e) {
+        //Obtener archivo
+        var file = e.target.files[0];
+
+        // Crear un storage ref
+        var storageRef = firebase.storage().ref('mis_fotos/' + file.name);
+
+        // Subir archivo
+        var task = storageRef.put(file);
+
+        // Actualizar barra progreso
+        task.on('state_changed',
+
+          function progress(snapshot) {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            uploader.value = percentage;
+          },
+
+          function error(err) {
+            alert(err);
+
+          },
+
+          function complete() {
+            console.log("archivo enviado");
+
+          }
+        )
+      });
   
 
+//esta función guarda los campos junto con la imagen
   function guardar(){
+
+   var uploader = document.getElementById('uploader');
+      var fileButton = document.getElementById('fileButton');
+
   
   var concepto = document.getElementById("concepto").value;
   var monto = document.getElementById("monto").value;
-  var imagen = document.getElementById("imagen").value;
+  
+
+ // var imagen = document.getElementById("imagen").value;
 
   
      db.collection("NestorYzmaya").doc(MesyAño).collection(""+dia+"").add({
@@ -47,11 +90,16 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
 
   }
 
-         document.getElementById("demo").innerHTML = "Mis Gastos: " + fecha;
 
+
+//se pinta la fecha actual en el DOM
+document.getElementById("demo").innerHTML = "Mis Gastos: " + fecha;
+
+//Esta función agrega las filas con las que se obtienen los demas objetos
          function agregarConcepto(){
           document.getElementById("tablaGastos").insertRow(-1).innerHTML = '<td><input type=text name=name id='+ '' +'  /></td><td><input type=text name=name id='+ '' +' /></td><td><input type=file class="button primary fit small" name=adjunto accept=.jpg,.png ></td><td></td>';
                   
          }
+
 
 

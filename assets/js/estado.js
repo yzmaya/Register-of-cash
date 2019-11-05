@@ -37,6 +37,7 @@ db.collection("NestorYzmaya").doc(MesyAño).collection(""+dia+"").get().then(fun
                   <tr>
                     <td>${doc.data().fconcepto}</td>
                     <td>${doc.data().fmonto}</td>
+                    <td>${doc.data().imagen}</td>
                     <td>john@example.com</td>
                   </tr>
        `

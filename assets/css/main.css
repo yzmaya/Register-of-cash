@@ -5,6 +5,7 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
+
 .image-upload > input
 {
     display: none;
@@ -15,6 +16,12 @@
     width: 40px;
     cursor: pointer;
 }
+ #uploader {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 50%;
+        margin-bottom: 10px;
+      }
       
 /* Basic */
 @-ms-viewport {

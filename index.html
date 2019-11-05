@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
 		
 		
 
@@ -69,14 +70,16 @@
 					      <tr>
 					        <td><input type="text"  id="concepto" value="" placeholder="Concepto" /></td>
 					        <td><input type="text"  id="monto" value="" placeholder="Monto" /></td>
-					        <td>
+					        <td> <!--
 								<div class="image-upload">
 									    <label for="fichero">
 									        <img src="http://files.softicons.com/download/toolbar-icons/mono-general-icons-3-by-custom-icon-design/png/256x256/camera.png" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >  Subir  Comprobante 
 									    </label>
 
 									    <input id="fichero" type="file"   />
-									</div>
+									</div> -->
+									 <progress value="0" max="100" id="uploader">0%</progress>
+    							<input type="file" value="upload" id="fileButton" />
 					        </td>
 
 					      </tr>
