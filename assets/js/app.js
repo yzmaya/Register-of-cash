@@ -27,6 +27,7 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
  // Obtener Elementos
       var uploader = document.getElementById('uploader');
       var fileButton = document.getElementById('fileButton');
+      var resultado 
 
       // Vigilar selección archivo
       fileButton.addEventListener('change', function(e) {
@@ -35,6 +36,7 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
 
         // Crear un storage ref
         var storageRef = firebase.storage().ref('mis_fotos/' + file.name);
+        resultado = file.name
 
         // Subir archivo
         var task = storageRef.put(file);
@@ -55,6 +57,7 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
           function complete() {
             console.log("archivo enviado");
 
+
           }
         )
       });
@@ -63,8 +66,11 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
 //esta función guarda los campos junto con la imagen
   function guardar(){
 
+console.log(resultado);
    var uploader = document.getElementById('uploader');
       var fileButton = document.getElementById('fileButton');
+
+      console.log(resultado);
 
   
   var concepto = document.getElementById("concepto").value;
@@ -76,7 +82,8 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
   
      db.collection("NestorYzmaya").doc(MesyAño).collection(""+dia+"").add({
           fconcepto: concepto,
-          fmonto: monto
+          fmonto: monto,
+          fimagen: resultado
           
       })
       .then(function(docRef) {

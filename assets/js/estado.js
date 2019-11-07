@@ -15,6 +15,12 @@
  
 
   var db = firebase.firestore();
+  var storage = firebase.storage();
+  var pathReference = storage.ref('mis_fotos/');
+
+var gsReference = storage.refFromURL('gs://reco-2cabc.appspot.com/mis_fotos/pagina_home.jpg')
+
+
   var tabla = document.getElementById('tabla');
 
 
@@ -37,8 +43,8 @@ db.collection("NestorYzmaya").doc(MesyAño).collection(""+dia+"").get().then(fun
                   <tr>
                     <td>${doc.data().fconcepto}</td>
                     <td>${doc.data().fmonto}</td>
-                    <td>${doc.data().imagen}</td>
-                    <td>john@example.com</td>
+                    <td>${doc.data().fimagen}</td>
+                    <td>gsReference</td>
                   </tr>
        `
     });
