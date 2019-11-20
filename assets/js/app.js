@@ -13,19 +13,18 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-
+var correoe
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
 
 
-    // User is signed in.
-
-    var user = firebase.auth().currentUser;
-    console.log('usuario autentificado');
-   
-
     if(user != null){
+
+    var email_id = user.email;
+    document.getElementById("info").innerHTML = 'Bienvenido ' + email_id;
+  //  var uid = user.uid;
+    // document.getElementById("uid").innerHTML = uid; 
 
     }
 
@@ -33,12 +32,13 @@ firebase.auth().onAuthStateChanged(function(user) {
     // No user is signed in.
 
     console.log('usuario no logueado')
+    window.location.href = 'index.html';
 
   }
 });
 
 
- 
+ document.getElementById("info").innerHTML = correoe;
 
   var db = firebase.firestore();
 //obteniendo año mes y dia actual
@@ -139,3 +139,6 @@ document.getElementById("demo").innerHTML = "Mis Gastos: " + fecha;
 
 
 
+function logout(){
+  firebase.auth().signOut();
+}
