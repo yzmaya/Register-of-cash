@@ -1,5 +1,5 @@
-
-      // Your web app's Firebase configuration
+ // Initialize Firebase
+   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyC7kBXyd1LcKq4JJiW-3JlhcBOJPtNucHM",
     authDomain: "reco-2cabc.firebaseapp.com",
@@ -12,6 +12,32 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+
+
+    // User is signed in.
+
+    var user = firebase.auth().currentUser;
+    console.log('usuario autentificado');
+   
+
+    if(user != null){
+
+    }
+
+  } else {
+    // No user is signed in.
+
+    console.log('usuario no logueado')
+
+  }
+});
+
+
  
 
   var db = firebase.firestore();
@@ -33,10 +59,11 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
       fileButton.addEventListener('change', function(e) {
         //Obtener archivo
         var file = e.target.files[0];
+     
 
         // Crear un storage ref
         var storageRef = firebase.storage().ref('mis_fotos/' + file.name);
-        resultado = file.name
+        resultado =  file.name
 
         // Subir archivo
         var task = storageRef.put(file);
@@ -69,9 +96,6 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
 console.log(resultado);
    var uploader = document.getElementById('uploader');
       var fileButton = document.getElementById('fileButton');
-
-      console.log(resultado);
-
   
   var concepto = document.getElementById("concepto").value;
   var monto = document.getElementById("monto").value;
@@ -82,8 +106,8 @@ console.log(resultado);
   
      db.collection("NestorYzmaya").doc(MesyAño).collection(""+dia+"").add({
           fconcepto: concepto,
-          fmonto: monto,
-          fimagen: resultado
+          fmonto: monto
+        
           
       })
       .then(function(docRef) {
@@ -104,8 +128,13 @@ document.getElementById("demo").innerHTML = "Mis Gastos: " + fecha;
 
 //Esta función agrega las filas con las que se obtienen los demas objetos
          function agregarConcepto(){
+
+            res = document.getElementById("contador1");
+             res.value = parseInt(res.value);
+     
           document.getElementById("tablaGastos").insertRow(-1).innerHTML = '<td><input type=text name=name id='+ '' +'  /></td><td><input type=text name=name id='+ '' +' /></td><td><input type=file class="button primary fit small" name=adjunto accept=.jpg,.png ></td><td></td>';
-                  
+          res.value++;
+          console.log(res);
          }
 
 

@@ -1,161 +1,144 @@
-<!DOCTYPE HTML>
-<!--
-	Industrious by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Bienvenido a Reco</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
-		
-		
+<head>
+  <title>Inventario TIC</title>
+<link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
+
+<meta charset="utf-8">
+ 
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-	</head>
-	<body class="is-preload">
+ 
+</head>
+<body style="background-color: #F6F6F6;">
 
-		<!-- Header -->
-			<header id="header">
-				<a class="logo" href="index.html">RECO</a>
-				<nav>
-					<a  onclick="agregarConcepto();" class="button primary small">Agregar +</a>
-					<a href="#menu">Menu</a>
-				</nav>
-			</header>
+  <div class="container">
 
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="elements.html">Elements</a></li>
-					<li><a href="estado.html">Estado</a></li>
-				</ul>
-			</nav>
+  <div class="login-container" id="login_div">
+            <div class=""><h3>Inventario TIC</h3></div>
+            
+              
+                <div class="form-group">
+                  <div class="">
+                    <input type="email" class="form-control" id="campo_email" placeholder="Correo Electrónico" name="email" required="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="">          
+                    <input type="password" class="form-control" id="campo_pwd" placeholder="Ingresar Contraseña" name="pwd" required="">
+                  </div>
+                </div>
+                <div class="form-group">        
+                  <div class="">
+                    <span><a href="" data-target="#myModal2" data-toggle="modal" > ¿Olvidaste tu contraseña?</a></span><br><br>
+                    <button  class="btn btn-success" onclick="login()">Iniciar Sesión</button>
+                  </div>
+                </div>
+              
+                <div class="well">
+            <span>¿No tienes una cuenta? <a href="" data-target="#myModal" data-toggle="modal">Regístrate</a></span>
+                </div> 
+</div>
 
-		<!-- Banner 
-			<section id="banner">
-				<div class="inner">
-					<h1>RECO</h1>
-					<p>Registra todas tus compras de forma sencilla para que no te preguntes despúes, pues cuántas pedas me he puesto?</p>
-				</div>
-				<video autoplay loop muted playsinline src="images/banner.mp4"></video>
-			</section> -->
+ <!-- MODAL PARA REGISTRARSE COMO NUEVO USUARIO  -->
 
-		<!-- Highlights -->
-			<section class="wrapper" >
-				<div class="inner">
-					<header class="special">
-						<h2 id="demo"></h2>
-						<p>Enlista en lo que has gastado hasta ahora</p>
-					</header>
-
-					<div class="container">          
-					  <table class="table table-hover" id="tablaGastos">
-					    <thead>
-					      <tr>
-					        <th>Concepto</th>
-					        <th>Monto</th>
-					        <th>Adjuntar comprobante</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-					      <tr>
-					        <td><input type="text"  id="concepto" value="" placeholder="Concepto" /></td>
-					        <td><input type="text"  id="monto" value="" placeholder="Monto" /></td>
-					        <td> <!--
-								<div class="image-upload">
-									    <label for="fichero">
-									        <img src="http://files.softicons.com/download/toolbar-icons/mono-general-icons-3-by-custom-icon-design/png/256x256/camera.png" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >  Subir  Comprobante 
-									    </label>
-
-									    <input id="fichero" type="file"   />
-									</div> -->
-									 <progress value="0" max="100" id="uploader">0%</progress>
-    							<input type="file" value="upload" id="fileButton" />
-					        </td>
-
-					      </tr>
-					    </tbody>
-					  </table>
-					  <button class="btn btn-success" onclick="guardar()">Guardar</button>
-
-					</div>
+  
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Registrate</h4>
+        </div>
+        <div class="modal-body">
+          
+        
+            <div class="form-group">
+              <label for="email">Correo Electrónico:</label>
+              <input type="email" class="form-control" id="nuevo_email" placeholder="Captura tu dirección de email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Contraseña:</label>
+              <input type="password" class="form-control" id="nuevo_pwd" placeholder="Captura tu contraseña" name="pwd">
+            </div>
+            <button class="btn btn-success" onclick="cuentaNueva()">Crear Cuenta</button> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 
-					
-			
-				</div>
-			</section>
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Reestablece tu contraseña</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="email">Correo Electrónico:</label>
+              <input type="email" class="form-control" id="restablece_email" placeholder="Captura tu dirección de email" name="email">
+            </div>
+            <button class="btn btn-success" onclick="restablecePwd()">Enviar</button> 
+            <br>
+            <span id="mensajito" style="color: red; display: none; ">Se ha enviado tu contraseña al correo capturado.</span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
-		<!-- CTA -->
-			<section id="cta" class="wrapper">
-				<div class="inner">
-					<h2>Curabitur ullamcorper ultricies</h2>
-					<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
-				</div>
-			</section>
+</div>
 
-		<!-- Testimonials -->
-			<section class="wrapper">
-				<div class="inner">
-					<header class="special">
-						<h2>Faucibus consequat lorem</h2>
-						<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor.</p>
-					</header>
-				</div>
-			</section>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<div class="content">
-						<section>
-							<h3>Accumsan montes viverra</h3>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
-						</section>
-						<section>
-							<h4>Sem turpis amet semper</h4>
-							<ul class="alt">
-								<li><a href="#">Dolor pulvinar sed etiam.</a></li>
-								<li><a href="#">Etiam vel lorem sed amet.</a></li>
-								<li><a href="#">Felis enim feugiat viverra.</a></li>
-								<li><a href="#">Dolor pulvinar magna etiam.</a></li>
-							</ul>
-						</section>
-						<section>
-							<h4>Magna sed ipsum</h4>
-							<ul class="plain">
-								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
-							</ul>
-						</section>
-					</div>
-					<div class="copyright">
-						&copy; Untitled. Photos <a href="https://unsplash.co">Unsplash</a>, Video <a href="https://coverr.co">Coverr</a>.
-					</div>
-				</div>
-			</footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script type="text/javascript" src="assets/js/app2.js"></script>
-			<script type="text/javascript" src="assets/js/app.js">
-
-			</script>
-
-	</body>
+<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+<script>
+  // Initialize Firebase
+   // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC7kBXyd1LcKq4JJiW-3JlhcBOJPtNucHM",
+    authDomain: "reco-2cabc.firebaseapp.com",
+    databaseURL: "https://reco-2cabc.firebaseio.com",
+    projectId: "reco-2cabc",
+    storageBucket: "reco-2cabc.appspot.com",
+    messagingSenderId: "775658028653",
+    appId: "1:775658028653:web:05fbc136e9d85bb9350964",
+    measurementId: "G-Q71KJZLVWE"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+</script>
+<script src="assets/js/autenticacion.js"></script>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
