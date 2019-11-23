@@ -27,6 +27,8 @@
     
     InsertaUid();
    
+
+   
     
     // document.getElementById("uid").innerHTML = uid; 
 
@@ -106,10 +108,10 @@ function displayImage(row, images){
 
 
 
- 
-
+ function InsertaUid2(){
+var tabla1 = $('#uid').text();
   
-db.collection("NestorYzmaya").doc(MesyAño).collection(""+dia+"").get().then(function(querySnapshot) {
+db.collection(tabla1).doc(MesyAño).collection(""+dia+"").get().then(function(querySnapshot) {
   tabla.innerHTML = '';
 
     querySnapshot.forEach(function(doc) {
@@ -124,7 +126,7 @@ db.collection("NestorYzmaya").doc(MesyAño).collection(""+dia+"").get().then(fun
        `
     });
 });
-
+};
 
 
 

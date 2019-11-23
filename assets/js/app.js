@@ -81,11 +81,16 @@ contador.value++;
      
 
         // Crear un storage ref
-var storageRef = firebase.storage().ref(rutaaccess + '/' + MesyAño + '/' + dia + '/' + i + " " + file.name);
+var storageRef = firebase.storage().ref();
+
+var agregar = storageRef.child(rutaaccess + '/' + MesyAño + '/' + dia + '/' + file.name);
        
 
         // Subir archivo
-        var task = storageRef.put(file);
+        var task = agregar.put(file);
+
+
+
 
         // Actualizar barra progreso
         task.on('state_changed',
@@ -102,6 +107,18 @@ var storageRef = firebase.storage().ref(rutaaccess + '/' + MesyAño + '/' + dia 
 
           function complete() {
             console.log("archivo enviado");
+
+storageRef.child(rutaaccess + '/' + MesyAño + '/' + dia + '/' + file.name).getDownloadURL().then(function(url){
+  
+  
+    console.log(url.toString());
+
+
+ // i++;
+   //displayImage(i, imageRef);
+  
+});
+
 
 
           }
