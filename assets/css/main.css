@@ -119,7 +119,7 @@ html {
       font-size: 11pt; } }
 
 body {
-  background-color: #ffffff;
+  background-color: #fff;
   color: #444444; }
 
 body, input, select, textarea {
@@ -366,14 +366,14 @@ button,
   button.primary,
   .button.primary {
     box-shadow: none;
-    background-color: #ce1b28;
+    background-color: #195E63;
     color: #ffffff !important; }
     input[type="submit"].primary:hover,
     input[type="reset"].primary:hover,
     input[type="button"].primary:hover,
     button.primary:hover,
     .button.primary:hover {
-      background-color: #e2212f;
+      background-color: #8EBDB6;
       box-shadow: none; }
       input[type="submit"].primary:hover:active,
       input[type="reset"].primary:hover:active,
@@ -532,8 +532,8 @@ textarea {
   input[type="url"]:focus,
   select:focus,
   textarea:focus {
-    border-color: #ce1b28;
-    box-shadow: 0 0 0 1px #ce1b28; }
+    border-color: #195E63;
+    box-shadow: 0 0 0 1px #195E63; }
 
 select {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='rgba(0, 0, 0, 0.25)' /%3E%3C/svg%3E"); }
@@ -1797,7 +1797,7 @@ ul.icons {
 
 /* Wrapper */
 .wrapper {
-  padding: 8rem 0 6rem 0 ;
+  padding: 4rem 0 3rem 0 ;
   position: relative;
   z-index: 1; }
   @media screen and (max-width: 1280px) {
@@ -2075,15 +2075,15 @@ ul.icons {
 
 /* CTA */
 #cta {
-  background-color: #ce1b28;
-  color: rgba(255, 255, 255, 0.75);
+  /*! background-color: #C8E98E; */
+  color: rgba(255, 255, 255, 1);
   background-attachment: fixed;
   background-image: linear-gradient(rgba(206, 27, 40, 0.25), rgba(206, 27, 40, 0.25)), url(../../images/cta01.jpg);
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  text-align: center;
+  text-align: left;
   z-index: 1; }
   #cta input, #cta select, #cta textarea {
     color: #ffffff; }
@@ -2435,7 +2435,7 @@ body {
   -webkit-justify-content: space-between;
   -ms-justify-content: space-between;
   justify-content: space-between;
-  background: #111111;
+  background: #041122;
   color: rgba(255, 255, 255, 0.5);
   cursor: default;
   height: 3.25rem;

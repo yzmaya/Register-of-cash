@@ -13,7 +13,6 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-var correoe
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -22,8 +21,10 @@ firebase.auth().onAuthStateChanged(function(user) {
     if(user != null){
 
     var email_id = user.email;
-    document.getElementById("info").innerHTML = 'Bienvenido ' + email_id;
-  //  var uid = user.uid;
+    document.getElementById("info").innerHTML = email_id;
+     var uid = user.uid;
+    document.getElementById("uid").innerHTML = uid;
+    
     // document.getElementById("uid").innerHTML = uid; 
 
     }
@@ -38,7 +39,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 
- document.getElementById("info").innerHTML = correoe;
+
 
   var db = firebase.firestore();
 //obteniendo año mes y dia actual
@@ -53,17 +54,35 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
  // Obtener Elementos
       var uploader = document.getElementById('uploader');
       var fileButton = document.getElementById('fileButton');
-      var resultado 
 
+      var contador = document.getElementById('contador');
+ 
+      
+
+      function test(){
+        
+        contador.value = parseInt(contador.value);
+
+contador.value++;
+
+      };
+
+
+
+
+      
       // Vigilar selección archivo
       fileButton.addEventListener('change', function(e) {
+        var rutaaccess = $('#uid').text();
+        
+
         //Obtener archivo
         var file = e.target.files[0];
      
 
         // Crear un storage ref
-        var storageRef = firebase.storage().ref('mis_fotos/' + file.name);
-        resultado =  file.name
+var storageRef = firebase.storage().ref(rutaaccess + '/' + MesyAño + '/' + dia + '/' + i + " " + file.name);
+       
 
         // Subir archivo
         var task = storageRef.put(file);
@@ -90,10 +109,11 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
       });
   
 
+
 //esta función guarda los campos junto con la imagen
   function guardar(){
 
-console.log(resultado);
+var identifier = $('#uid').text();
    var uploader = document.getElementById('uploader');
       var fileButton = document.getElementById('fileButton');
   
@@ -103,8 +123,7 @@ console.log(resultado);
 
  // var imagen = document.getElementById("imagen").value;
 
-  
-     db.collection("NestorYzmaya").doc(MesyAño).collection(""+dia+"").add({
+     db.collection(identifier).doc(MesyAño).collection(""+dia+"").add({
           fconcepto: concepto,
           fmonto: monto
         
@@ -114,6 +133,8 @@ console.log(resultado);
           console.log("Document written with ID: ", docRef.id);
           document.getElementById("concepto").value = '';
           document.getElementById("monto").value = '';
+
+          mostrarDatos();
       })
       .catch(function(error) {
           console.error("Error adding document: ", error);
@@ -126,19 +147,31 @@ console.log(resultado);
 //se pinta la fecha actual en el DOM
 document.getElementById("demo").innerHTML = "Mis Gastos: " + fecha;
 
-//Esta función agrega las filas con las que se obtienen los demas objetos
-         function agregarConcepto(){
-
-            res = document.getElementById("contador1");
-             res.value = parseInt(res.value);
-     
-          document.getElementById("tablaGastos").insertRow(-1).innerHTML = '<td><input type=text name=name id='+ '' +'  /></td><td><input type=text name=name id='+ '' +' /></td><td><input type=file class="button primary fit small" name=adjunto accept=.jpg,.png ></td><td></td>';
-          res.value++;
-          console.log(res);
-         }
-
-
 
 function logout(){
   firebase.auth().signOut();
 }
+
+
+function mostrarDatos(){
+
+  var identifiertable = $('#uid').text();
+
+db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(function(querySnapshot) {
+  tabla.innerHTML = '';
+
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+      //  console.log(doc.id, " => ", doc.data().concepto);
+       tabla.innerHTML += `
+                  <tr>
+                    <td>${doc.data().fconcepto}</td>
+                    <td>${doc.data().fmonto}</td>
+                  </tr>
+       `
+    });
+});
+
+};
+
+

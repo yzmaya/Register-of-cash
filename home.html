@@ -18,9 +18,11 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="index.html">RECO</a>
+				<a class="logo" href="home.html">RECO</a>
 				<a class="logo"  id="info">Usuario :</a>
+				<a id="uid" style="display: none;"></a>
 				<nav>
+					<a href="" onclick="logout()"><span class="glyphicon glyphicon-user"></span> Cerrar Sesión</a>
 					<a href="#menu">Menu</a>
 					 
 				</nav>
@@ -29,7 +31,7 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Registro del día</a></li>
+					<li><a href="Estado.html">Registro del día</a></li>
 					<li><a href="elements.html">Elements</a></li>
 					<li><a href="estado.html">Gastos de Hoy</a></li>
 				</ul>
@@ -47,42 +49,30 @@
 		<!-- Highlights -->
 			<section class="wrapper" >
 				<div class="inner">
-					<header class="special">
-						<h2 id="demo"></h2>
-						<p>Enlista en lo que has gastado hasta ahora</p>
-					</header>
-
-					<div class="container">          
-					  <table class="table table-hover" id="tablaGastos">
+					<div class="container">    
+						<span id="demo">Enlista en lo que has gastado hasta ahora</span> 
+						<div class="table-responsive">     
+					  <table class="table" id="tablaGastos">
 					    <thead>
 					      <tr>
 					        <th>Concepto</th>
 					        <th>Monto</th>
 					        <th>Adjuntar comprobante</th>
-					        <th><input type="text"  size="1"  value="0" id="contador1"/></th>
 					      </tr>
 					    </thead>
 					    <tbody>
 					      <tr>
-					        <td><input type="text"  id="concepto" value="" placeholder="Concepto" /></td>
-					        <td><input type="text"  id="monto" value="" placeholder="Monto" /></td>
-					        <td> <!--
-								<div class="image-upload">
-									    <label for="fichero">
-									        <img src="http://files.softicons.com/download/toolbar-icons/mono-general-icons-3-by-custom-icon-design/png/256x256/camera.png" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >  Subir  Comprobante 
-									    </label>
-
-									    <input id="fichero" type="file"   />
-									</div> -->
-									 <progress value="0" max="100" id="uploader">0%</progress>
-    							<input type="file" value="upload" id="fileButton" />
+					        <td><input type="text"  id="concepto" value="" placeholder="Concepto" required="" /></td>
+					        <td><input type="text"  id="monto" value="" placeholder="Monto" required="" /></td>
+					        <td>
+							 <progress value="0" max="100" id="uploader">0%</progress>
+    							<input type="file" value="upload" id="fileButton" size="1" />
 					        </td>
-
 					      </tr>
 					    </tbody>
 					  </table>
-					  <button class="btn btn-success" onclick="guardar()">Guardar</button>
-
+					  <button class="btn primary" onclick="guardar()">Guardar</button>
+					  </div>
 					</div>
 
 
@@ -94,8 +84,20 @@
 		<!-- CTA -->
 			<section id="cta" class="wrapper">
 				<div class="inner">
-					<h2>Curabitur ullamcorper ultricies</h2>
-					<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+					<div class="content">
+						<div class="container">           
+						  <table class="table table-bordered">
+						    <thead>
+						      <tr>
+						        <th>Concepto</th>
+						        <th>Monto</th>
+						      </tr>
+						    </thead>
+						    <tbody id="tabla">
+						    </tbody>
+						  </table>
+						</div>
+					</div>
 				</div>
 			</section>
 

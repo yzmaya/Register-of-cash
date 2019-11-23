@@ -23,14 +23,16 @@
 			<header id="header">
 				<a class="logo" href="index.html">RECO</a>
 				<nav>
+					<a href="" onclick="logout()"><span class="glyphicon glyphicon-user"></span> Cerrar Sesión</a>
 					<a href="#menu">Menu</a>
+					<a id="uid" style="display: none;"></a>
 				</nav>
 			</header>
 
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="home.html">Home</a></li>
 					<li><a href="elements.html">Elements</a></li>
 					<li><a href="generic.html">Generic</a></li>
 				</ul>
@@ -148,6 +150,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
 			<script type="text/javascript" src="assets/js/estado.js"></script>
 
 	</body>

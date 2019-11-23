@@ -15,14 +15,37 @@
  
 
   var db = firebase.firestore();
+
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+
+
+    if(user != null){
+
+     var uid = user.uid;
+    document.getElementById("uid").innerHTML = uid;
+    
+    InsertaUid();
+   
+    
+    // document.getElementById("uid").innerHTML = uid; 
+
+    }
+
+  } else {
+    // No user is signed in.
+
+    console.log('usuario no logueado')
+    window.location.href = 'index.html';
+
+  }
+});
   
   
 
   var tabla = document.getElementById('tabla');
   var tabla2 = document.getElementById('tabla2');
 
-
-console.log('epale');
 
 
   var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
@@ -39,20 +62,26 @@ var storageRef = storage.ref();
 $('#List').find('tbody').html('');
 var i = 0;
 
-var i = 0;
 
 
 
-storageRef.child('mis_fotos/').listAll().then(function(result){
+function InsertaUid(){
+
+var identifier = $('#uid').text();
+console.log(identifier);
+
+storageRef.child(identifier + '/' + MesyAño + '/' + dia + '/').listAll().then(function(result){
   
   result.items.forEach(function(imageRef){
-   // console.log('imagen de referncia' + imageRef.toString());
+    //console.log('imagen de referncia' + imageRef.toString());
 
-   i++;
+
+  i++;
    displayImage(i, imageRef);
   });
 });
 
+};
 
 function displayImage(row, images){
   images.getDownloadURL().then(function(url){
@@ -72,6 +101,8 @@ function displayImage(row, images){
     $('#List').find('tbody').append(new_html);
   });
 }
+
+
 
 
 
@@ -96,3 +127,7 @@ db.collection("NestorYzmaya").doc(MesyAño).collection(""+dia+"").get().then(fun
 
 
 
+
+function logout(){
+  firebase.auth().signOut();
+}
