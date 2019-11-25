@@ -24,6 +24,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     document.getElementById("info").innerHTML = email_id;
      var uid = user.uid;
     document.getElementById("uid").innerHTML = uid;
+    mostrarDatos();
     
     // document.getElementById("uid").innerHTML = uid; 
 
@@ -58,14 +59,6 @@ var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
       var contador = document.getElementById('contador');
  
       
-
-      function test(){
-        
-        contador.value = parseInt(contador.value);
-
-contador.value++;
-
-      };
 
 
 var miImagen
@@ -109,7 +102,7 @@ var agregar = storageRef.child(rutaaccess + '/' + MesyAño + '/' + dia + '/' + f
 storageRef.child(rutaaccess + '/' + MesyAño + '/' + dia + '/' + file.name).getDownloadURL().then(function(url){
   
   miImagen = url.toString();
-    console.log(url.toString());
+  //  console.log(url.toString());
 
 
  // i++;
@@ -122,40 +115,89 @@ storageRef.child(rutaaccess + '/' + MesyAño + '/' + dia + '/' + file.name).getD
           }
         )
       });
-  
+
+function habilitar(){
+   if($('#checkbox-alpha').prop('checked')) {
+        $('#imagenes').show();
+    }else{
+        $('#imagenes').hide();
+    }
+};
+
+habilitar();
 
 
 //esta función guarda los campos junto con la imagen
   function guardar(){
 
-console.log(miImagen);
 var identifier = $('#uid').text();
    var uploader = document.getElementById('uploader');
       var fileButton = document.getElementById('fileButton');
   
   var concepto = document.getElementById("concepto").value;
   var monto = document.getElementById("monto").value;
-  
 
- // var imagen = document.getElementById("imagen").value;
 
-     db.collection(identifier).doc(MesyAño).collection(""+dia+"").add({
+if($('#checkbox-alpha').prop('checked')) {
+    
+
+if(concepto, monto, uploader.value == ''){
+    alert('llena el campo vacio');
+  }else{
+       db.collection(identifier).doc(MesyAño).collection(""+dia+"").add({
           fconcepto: concepto,
           fmonto: monto,
           fimagen: miImagen
-        
           
       })
       .then(function(docRef) {
           console.log("Document written with ID: ", docRef.id);
           document.getElementById("concepto").value = '';
           document.getElementById("monto").value = '';
+          document.getElementById("uploader").value = '';
+          document.getElementById("fileButton").value = '';
 
           mostrarDatos();
       })
       .catch(function(error) {
           console.error("Error adding document: ", error);
       });
+  }
+
+
+}else{
+  if(concepto, monto  == ''){
+    alert('llena el campo vacio');
+  }else{
+       db.collection(identifier).doc(MesyAño).collection(""+dia+"").add({
+          fconcepto: concepto,
+          fmonto: monto
+          
+      })
+      .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+          document.getElementById("concepto").value = '';
+          document.getElementById("monto").value = '';
+         
+
+          mostrarDatos();
+      })
+      .catch(function(error) {
+          console.error("Error adding document: ", error);
+      });
+  };
+
+
+
+}
+
+
+
+
+  
+  
+
+ 
 
   }
 
@@ -173,22 +215,34 @@ function logout(){
 function mostrarDatos(){
 
   var identifiertable = $('#uid').text();
+  var suma
+  var otro
 
 db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(function(querySnapshot) {
   tabla.innerHTML = '';
 
     querySnapshot.forEach(function(doc) {
+
+     
+        suma = parseInt(doc.data().fmonto);
+        otro = otro + suma.value ;
+      console.log(otro);
+
         // doc.data() is never undefined for query doc snapshots
       //  console.log(doc.id, " => ", doc.data().concepto);
        tabla.innerHTML += `
                   <tr>
                     <td>${doc.data().fconcepto}</td>
-                    <td>${doc.data().fmonto}</td>
+                    <td id="contador">${doc.data().fmonto}</td>
                     <td><a href=${doc.data().fimagen} target="_blank">Descargar</a></td>
                   </tr>
-       `
+       `  
+
     });
+    tabla.innerHTML += `<tr><td><strong>Total</strong></td><td>suma</td></tr>` 
 });
+
+
 
 };
 
