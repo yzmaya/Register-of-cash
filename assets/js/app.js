@@ -68,7 +68,7 @@ contador.value++;
       };
 
 
-
+var miImagen
 
       
       // Vigilar selección archivo
@@ -90,8 +90,6 @@ var agregar = storageRef.child(rutaaccess + '/' + MesyAño + '/' + dia + '/' + f
         var task = agregar.put(file);
 
 
-
-
         // Actualizar barra progreso
         task.on('state_changed',
 
@@ -110,7 +108,7 @@ var agregar = storageRef.child(rutaaccess + '/' + MesyAño + '/' + dia + '/' + f
 
 storageRef.child(rutaaccess + '/' + MesyAño + '/' + dia + '/' + file.name).getDownloadURL().then(function(url){
   
-  
+  miImagen = url.toString();
     console.log(url.toString());
 
 
@@ -130,6 +128,7 @@ storageRef.child(rutaaccess + '/' + MesyAño + '/' + dia + '/' + file.name).getD
 //esta función guarda los campos junto con la imagen
   function guardar(){
 
+console.log(miImagen);
 var identifier = $('#uid').text();
    var uploader = document.getElementById('uploader');
       var fileButton = document.getElementById('fileButton');
@@ -142,7 +141,8 @@ var identifier = $('#uid').text();
 
      db.collection(identifier).doc(MesyAño).collection(""+dia+"").add({
           fconcepto: concepto,
-          fmonto: monto
+          fmonto: monto,
+          fimagen: miImagen
         
           
       })
@@ -184,6 +184,7 @@ db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(fu
                   <tr>
                     <td>${doc.data().fconcepto}</td>
                     <td>${doc.data().fmonto}</td>
+                    <td><a href=${doc.data().fimagen} target="_blank">Descargar</a></td>
                   </tr>
        `
     });
