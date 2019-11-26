@@ -5,8 +5,8 @@
 // default settins - this structure can be moved in separate file in multilangual applications
 var A_TCALCONF = {
 	'cssprefix'  : 'tcal',
-	'months'     : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-	'weekdays'   : ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+	'months'     : ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	'weekdays'   : ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
 	'longwdays'  : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 	'yearscroll' : true, // show year scroller
 	'weekstart'  : 0, // first day of week: 0-Su or 1-Mo
