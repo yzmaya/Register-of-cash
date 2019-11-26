@@ -12,6 +12,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
 	</head>
 	<body class="is-preload">
@@ -31,7 +32,7 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="calendar.html">Calendario</a></li>
+					<li><a href="calendario.html">Calendario</a></li>
 					<li><a href="elements.html">Elements</a></li>
 					<li><a href="#">Gastos de Hoy</a></li>
 				</ul>
@@ -54,27 +55,11 @@
 				<div class="inner">
 					<div class="container">    
 						<span id="demo"></span> 
-										<div class="row gtr-uniform">
-											<div class="col-6 col-12-xsmall"><label>Concepto</label>
-												<input type="text" name="name" id="concepto"  placeholder="Concepto" maxlength="70" />
-											</div>
-											<div class="col-6 col-12-xsmall"><label>Monto</label>
-												<input type="text" name="monto" id="monto"  placeholder="Monto"  maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" />
-											</div>
-											<div class="col-6 col-12-small">
-												<input type="checkbox" id="checkbox-alpha" name="micheckbox" onclick="habilitar()">
-												<label for="checkbox-alpha">¿Subir Comprobante?</label>
-											</div>
-											<!-- Break -->
-											<div class="col-12" id="imagenes">
-    							                <input type="file" accept="image/*" value="upload" id="fileButton" size="1" required="" />
-    							                <progress value="0" max="100" id="uploader">0%</progress>
-											</div>
-											<!-- Break -->
-											<div class="col-12">
-													<button class="primary" onclick="guardar()">Guardar</button>
-											</div>
-										</div>
+						  <div id="calendar">
+						    <div id="calendar_header"><i class="icon-chevron-left"></i>          <h1></h1><i class="icon-chevron-right"></i>         </div>
+						    <div id="calendar_weekdays"></div>
+						    <div id="calendar_content"></div>
+						  </div>
 					</div>
 				</div>
 			</section>
@@ -163,7 +148,7 @@
 			<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
 			<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
 			<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
-			<script type="text/javascript" src="assets/js/app.js"></script>
+			<script type="text/javascript" src="assets/js/app2.js"></script>
 			<script type="text/javascript">
 
 

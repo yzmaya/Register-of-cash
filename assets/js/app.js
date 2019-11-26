@@ -14,6 +14,8 @@
   firebase.initializeApp(firebaseConfig);
 
 
+
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
 
@@ -215,35 +217,32 @@ function logout(){
 function mostrarDatos(){
 
   var identifiertable = $('#uid').text();
-  var suma
-  var otro
+  var suma = 0;
 
 db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(function(querySnapshot) {
   tabla.innerHTML = '';
 
     querySnapshot.forEach(function(doc) {
 
-     
-        suma = parseInt(doc.data().fmonto);
-        otro = otro + suma.value ;
-      console.log(otro);
+      suma+= parseInt(doc.data().fmonto);
+      console.log(suma);
 
         // doc.data() is never undefined for query doc snapshots
       //  console.log(doc.id, " => ", doc.data().concepto);
        tabla.innerHTML += `
                   <tr>
                     <td>${doc.data().fconcepto}</td>
-                    <td id="contador">${doc.data().fmonto}</td>
+                    <td>${doc.data().fmonto}</td>
                     <td><a href=${doc.data().fimagen} target="_blank">Descargar</a></td>
                   </tr>
        `  
-
     });
-    tabla.innerHTML += `<tr><td><strong>Total</strong></td><td>suma</td></tr>` 
+
+    tabla.innerHTML += `<tr><td><strong>Total</strong></td><td><span id="ey">esperando</span></td></tr>` 
+   document.getElementById("ey").innerHTML = suma;
+    
 });
 
 
 
 };
-
-
