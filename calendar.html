@@ -13,6 +13,8 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="assets/css/tcal.css" />
+		<script type="text/javascript" src="assets/js/tcal.js"></script> 
 
 	</head>
 	<body class="is-preload">
@@ -20,20 +22,19 @@
 		<!-- Header -->
 			<header id="header">
 				<a class="logo" href="home.html">RECO</a>
-				<a class="logo"  id="info">Usuario :</a>
 				<a id="uid" style="display: none;"></a>
 				<nav>
 					<a href="" onclick="logout()"><span class="glyphicon glyphicon-user"></span> Cerrar Sesión</a>
 					<a href="#menu">Menu</a>
 					 
-				</nav>
+				</nav> 
 			</header>
 
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="home.html">Inicio</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					
 				</ul>
 			</nav>
 
@@ -53,12 +54,17 @@
    			<section class="wrapper" >
 				<div class="inner">
 					<div class="container">    
+						<span class="logo"  id="info">Usuario :</span><br>
 						<span id="demo"></span> 
-						  <div id="calendar">
-						    <div id="calendar_header"><i class="icon-chevron-left"></i>          <h1></h1><i class="icon-chevron-right"></i>         </div>
-						    <div id="calendar_weekdays"></div>
-						    <div id="calendar_content"></div>
+						  <br><br>
+						  <div class="col-6 col-6-xsmall">
+						  		<form action="#">
+								<!-- add class="tcal" to your input field -->
+								<div><label>Selecciona una fecha:</label><input type="text" name="date" class="tcal" value="" /></div>
+							</form>
 						  </div>
+						  
+
 					</div>
 				</div>
 			</section>

@@ -22,7 +22,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     if(user != null){
 
     var email_id = user.email;
-    document.getElementById("info").innerHTML = email_id;
+     document.getElementById("info").innerHTML = 'Usuario: <strong>' + email_id + '</strong>'; 
      var uid = user.uid;
     document.getElementById("uid").innerHTML = uid;
     mostrarDatos();
@@ -67,90 +67,9 @@ var miImagen
       
      
 
-function habilitar(){
-   if($('#checkbox-alpha').prop('checked')) {
-        $('#imagenes').show();
-    }else{
-        $('#imagenes').hide();
-    }
-};
-
-habilitar();
 
 
-//esta función guarda los campos junto con la imagen
-  function guardar(){
-
-var identifier = $('#uid').text();
-   var uploader = document.getElementById('uploader');
-      var fileButton = document.getElementById('fileButton');
-  
-  var concepto = document.getElementById("concepto").value;
-  var monto = document.getElementById("monto").value;
-
-
-if($('#checkbox-alpha').prop('checked')) {
-    
-
-if(concepto, monto, uploader.value == ''){
-    alert('llena el campo vacio');
-  }else{
-       db.collection(identifier).doc(MesyAño).collection(""+dia+"").add({
-          fconcepto: concepto,
-          fmonto: monto,
-          fimagen: miImagen
-          
-      })
-      .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id);
-          document.getElementById("concepto").value = '';
-          document.getElementById("monto").value = '';
-          document.getElementById("uploader").value = '';
-          document.getElementById("fileButton").value = '';
-
-          mostrarDatos();
-      })
-      .catch(function(error) {
-          console.error("Error adding document: ", error);
-      });
-  }
-
-
-}else{
-  if(concepto, monto  == ''){
-    alert('llena el campo vacio');
-  }else{
-       db.collection(identifier).doc(MesyAño).collection(""+dia+"").add({
-          fconcepto: concepto,
-          fmonto: monto
-          
-      })
-      .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id);
-          document.getElementById("concepto").value = '';
-          document.getElementById("monto").value = '';
-         
-
-          mostrarDatos();
-      })
-      .catch(function(error) {
-          console.error("Error adding document: ", error);
-      });
-  };
-
-
-
-}
-
-
-
-
-  
-  
-
- 
-
-  }
+//esta función guarda los campos junto con la image
 
 
 
