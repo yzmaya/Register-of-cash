@@ -226,16 +226,35 @@ db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(fu
 
       suma+= parseFloat(doc.data().fmonto);
       console.log(suma);
+      
+      var exist = doc.data().fimagen;
+       console.log(exist);
 
-        // doc.data() is never undefined for query doc snapshots
-      //  console.log(doc.id, " => ", doc.data().concepto);
-       tabla.innerHTML += `
+      if(exist === undefined){
+
+           tabla.innerHTML += `
+                  <tr>
+                    <td>${doc.data().fconcepto}</td>
+                    <td>${doc.data().fmonto}</td>
+                    <td></td>
+                  </tr>
+       ` 
+
+      }else{
+
+          tabla.innerHTML += `
                   <tr>
                     <td>${doc.data().fconcepto}</td>
                     <td>${doc.data().fmonto}</td>
                     <td><a href=${doc.data().fimagen} target="_blank">Descargar</a></td>
                   </tr>
-       `  
+       ` 
+
+      };
+
+        // doc.data() is never undefined for query doc snapshots
+      //  console.log(doc.id, " => ", doc.data().concepto);
+      
     });
 
     tabla.innerHTML += `<tr><td><strong>Total</strong></td><td><span id="ey"></span></td></tr>` 
