@@ -224,7 +224,7 @@ db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(fu
 
     querySnapshot.forEach(function(doc) {
 
-      suma+= parseInt(doc.data().fmonto);
+      suma+= parseFloat(doc.data().fmonto);
       console.log(suma);
 
         // doc.data() is never undefined for query doc snapshots
@@ -238,7 +238,7 @@ db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(fu
        `  
     });
 
-    tabla.innerHTML += `<tr><td><strong>Total</strong></td><td><span id="ey">esperando</span></td></tr>` 
+    tabla.innerHTML += `<tr><td><strong>Total</strong></td><td><span id="ey"></span></td></tr>` 
    document.getElementById("ey").innerHTML = suma;
     
 });
