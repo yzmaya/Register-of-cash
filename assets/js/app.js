@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     if(user != null){
 
     var email_id = user.email;
-    document.getElementById("info").innerHTML = email_id;
+    document.getElementById("info").innerHTML = 'Usuario: <strong>' + email_id + '</strong>'; 
      var uid = user.uid;
     document.getElementById("uid").innerHTML = uid;
     mostrarDatos();
