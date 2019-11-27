@@ -14,7 +14,7 @@ var A_TCALCONF = {
 	'nextyear'   : 'Next Year',
 	'prevmonth'  : 'Previous Month',
 	'nextmonth'  : 'Next Month',
-	'format'     : 'm/d/Y' // 'd-m-Y', Y-m-d', 'l, F jS Y'
+	'format'     : 'd-m-Y' // 'd-m-Y', Y-m-d', 'l, F jS Y'
 };
 
 var A_TCALTOKENS = [
@@ -150,6 +150,7 @@ function f_tcalUpdate (n_date, b_keepOpen) {
 		var e_cal = document.getElementById(s_pfx);
 		if (!e_cal || e_cal.style.visibility != 'visible') return;
 		e_cal.innerHTML = f_tcalGetHTML(d_date, e_input);
+
 	}
 	else {
 		e_input.value = f_tcalGenerateDate(d_date, A_TCALCONF.format);
@@ -227,7 +228,13 @@ function f_tcalGenerateDate (d_date, s_format) {
 		s_char = s_format.charAt(n);
 		s_date += A_TCALTOKENS_IDX[s_char] ? A_TCALTOKENS_IDX[s_char]['g'](d_date) : s_char;
 	}
+	var cadena = s_date;
+	console.log(cadena.substring(0,2));
+	console.log(cadena.substring(3,5));
+	console.log(cadena.substring(6,10));
+	
 	return s_date;
+
 }
 
 function f_tcalGetInputs (b_active) {
