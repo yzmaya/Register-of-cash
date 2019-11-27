@@ -229,9 +229,11 @@ function f_tcalGenerateDate (d_date, s_format) {
 		s_date += A_TCALTOKENS_IDX[s_char] ? A_TCALTOKENS_IDX[s_char]['g'](d_date) : s_char;
 	}
 	var cadena = s_date;
-	console.log(cadena.substring(0,2));
-	console.log(cadena.substring(3,5));
-	console.log(cadena.substring(6,10));
+	var stringuno = cadena.substring(0,2)
+	var stringdos = cadena.substring(3,5);
+	var stringtres = cadena.substring(6,10);
+
+	mostrarDatos(stringuno, stringdos, stringtres);
 	
 	return s_date;
 

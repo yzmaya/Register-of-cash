@@ -82,21 +82,27 @@ function logout(){
 }
 
 
-function mostrarDatos(){
+function mostrarDatos(uno, dos, tres){
+  console.log(uno);
+  console.log(dos);
+  console.log(tres);
+if(dos == '11'){
+  dos = 'Noviembre';
+}
+
 
   var identifiertable = $('#uid').text();
   var suma = 0;
 
-db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(function(querySnapshot) {
+db.collection(identifiertable).doc(dos + ' ' + tres).collection(""+uno+"").get().then(function(querySnapshot) {
   tabla.innerHTML = '';
 
     querySnapshot.forEach(function(doc) {
 
-      suma+= parseInt(doc.data().fmonto);
-      console.log(suma);
+      suma+= parseFloat(doc.data().fmonto);
 
       var exist = doc.data().fimagen;
-       console.log(exist);
+      // console.log(exist);
 
       if(exist === undefined){
 
