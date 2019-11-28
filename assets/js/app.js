@@ -225,10 +225,10 @@ db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(fu
     querySnapshot.forEach(function(doc) {
 
       suma+= parseFloat(doc.data().fmonto);
-      console.log(suma);
+    //  console.log(suma);
       
       var exist = doc.data().fimagen;
-       console.log(exist);
+      // console.log(exist);
 
       if(exist === undefined){
 
@@ -259,9 +259,20 @@ db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(fu
 
     tabla.innerHTML += `<tr><td><strong>Total</strong></td><td><span id="ey"></span></td></tr>` 
    document.getElementById("ey").innerHTML = suma;
+
+
+
+db.collection(identifiertable).doc(MesyAño + ' total').collection(""+dia+"").doc('total').set({
+
+    total: suma
+})
+
+   //agregarTotal(identifiertable, MesyAño, dia, suma);
     
 });
 
 
 
 };
+
+

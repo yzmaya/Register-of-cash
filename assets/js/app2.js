@@ -21,8 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if(user != null){
 
-    var email_id = user.email;
-     document.getElementById("info").innerHTML = 'Usuario: <strong>' + email_id + '</strong>'; 
+  
      var uid = user.uid;
     document.getElementById("uid").innerHTML = uid;
     mostrarDatos();
@@ -74,7 +73,6 @@ var miImagen
 
 
 //se pinta la fecha actual en el DOM
-document.getElementById("demo").innerHTML = "Mis Gastos: " + fecha;
 
 
 function logout(){
@@ -83,11 +81,55 @@ function logout(){
 
 
 function mostrarDatos(uno, dos, tres){
-  console.log(uno);
-  console.log(dos);
-  console.log(tres);
-if(dos == '11'){
-  dos = 'Noviembre';
+ // console.log(uno);
+  //console.log(dos);
+  //console.log(tres);
+//if(dos == '11'){
+  //dos = 'Noviembre';
+//}
+
+
+
+switch (dos) { 
+  case '11': 
+    dos = 'Noviembre'
+    break;
+  case '12': 
+    dos = 'Diciembre'
+    break;
+  case '11': 
+    dos = 'Enero'
+    break;
+  case '12': 
+    dos = 'Febrero'
+    break;
+  case '11': 
+    dos = 'Marzo'
+    break;
+  case '12': 
+    dos = 'Abril'
+    break;
+  case '11': 
+    dos = 'Mayo'
+    break;
+  case '12': 
+    dos = 'Junio'
+    break;
+  case '11': 
+    dos = 'Julio'
+    break;
+  case '12': 
+    dos = 'Agosto'
+    break;
+  case '11': 
+    dos = 'Septiembre'
+    break;
+  case '12': 
+    dos = 'Octubre'
+    break;
+  
+  default:
+    console.log('hay un error en el mes');
 }
 
 
@@ -130,8 +172,55 @@ db.collection(identifiertable).doc(dos + ' ' + tres).collection(""+uno+"").get()
 
     tabla.innerHTML += `<tr><td><strong>Total</strong></td><td><span id="ey">esperando</span></td></tr>` 
    document.getElementById("ey").innerHTML = suma;
+   agregarTotal(identifiertable, dos, tres, suma, uno);
     
 });
+
+
+
+};
+
+
+function agregarTotal(id, mduno, mddos, total, mmdday){
+
+
+var param1 = id;
+var param2 = mduno.toString() + ' ' + mddos.toString();
+var param3 = total;
+var param4 = mmdday.toString();
+
+
+
+
+
+var suma = 0;
+
+var i
+for(i=1;i<31;i++){
+
+
+
+db.collection(param1).doc(param2 + ' total').collection(""+i+"").get().then(function(querySnapshot) {
+  
+
+    querySnapshot.forEach(function(doc) {
+
+      suma+= parseFloat(doc.data().total);
+      
+ 
+      
+    });
+
+     console.log(suma);
+ document.getElementById("ey2").innerHTML = 'Has gastado $' + suma + ' en el mes de ' + mduno;
+
+
+    
+});
+
+
+}
+
 
 
 
