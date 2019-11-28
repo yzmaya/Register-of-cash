@@ -97,34 +97,34 @@ switch (dos) {
   case '12': 
     dos = 'Diciembre'
     break;
-  case '11': 
+  case '01': 
     dos = 'Enero'
     break;
-  case '12': 
+  case '02': 
     dos = 'Febrero'
     break;
-  case '11': 
+  case '03': 
     dos = 'Marzo'
     break;
-  case '12': 
+  case '04': 
     dos = 'Abril'
     break;
-  case '11': 
+  case '05': 
     dos = 'Mayo'
     break;
-  case '12': 
+  case '06': 
     dos = 'Junio'
     break;
-  case '11': 
+  case '07': 
     dos = 'Julio'
     break;
-  case '12': 
+  case '08': 
     dos = 'Agosto'
     break;
-  case '11': 
+  case '09': 
     dos = 'Septiembre'
     break;
-  case '12': 
+  case '10': 
     dos = 'Octubre'
     break;
   
