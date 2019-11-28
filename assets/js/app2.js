@@ -81,14 +81,45 @@ function logout(){
 
 
 function mostrarDatos(uno, dos, tres){
- // console.log(uno);
+ //console.log(uno);
   //console.log(dos);
   //console.log(tres);
 //if(dos == '11'){
   //dos = 'Noviembre';
 //}
 
-
+switch (uno) { 
+  case '01': 
+    uno = '1'
+    break;
+  case '02': 
+    uno = '2'
+    break;
+  case '03': 
+    uno = '3'
+    break;
+  case '04': 
+    uno = '4'
+    break;
+  case '05': 
+    uno = '5'
+    break;
+  case '06': 
+    uno = '6'
+    break;
+  case '07': 
+    uno = '7'
+    break;
+  case '08': 
+    uno = '8'
+    break;
+  case '09': 
+    uno = '9'
+    break;
+  
+  default:
+ //   console.log('hay un error en el mes');
+}
 
 switch (dos) { 
   case '11': 
@@ -129,7 +160,7 @@ switch (dos) {
     break;
   
   default:
-    console.log('hay un error en el mes');
+  //  console.log('hay un error en el mes');
 }
 
 
@@ -211,8 +242,8 @@ db.collection(param1).doc(param2 + ' total').collection(""+i+"").get().then(func
       
     });
 
-     console.log(suma);
- document.getElementById("ey2").innerHTML = 'Has gastado $' + suma + ' en el mes de ' + mduno;
+    // console.log(suma);
+ document.getElementById("ey2").innerHTML = 'Has gastado <strong>$' + suma + '</strong> en el mes de ' + mduno + ' de ' + mddos;
 
 
     

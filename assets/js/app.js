@@ -22,9 +22,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if(user != null){
 
-    var email_id = user.email;
-    document.getElementById("info").innerHTML = 'Usuario: <strong>' + email_id + '</strong>'; 
-     var uid = user.uid;
+    //var email_id = user.email;
+    //document.getElementById("info").innerHTML = 'Usuario: <strong>' + email_id + '</strong>'; 
+    var uid = user.uid;
     document.getElementById("uid").innerHTML = uid;
     mostrarDatos();
     
@@ -193,20 +193,12 @@ if(concepto, monto, uploader.value == ''){
 
 }
 
-
-
-
-  
-  
-
- 
-
   }
 
 
 
 //se pinta la fecha actual en el DOM
-document.getElementById("demo").innerHTML = "Mis Gastos: " + fecha;
+document.getElementById("demo").innerHTML = "Registra tus gastos al : " + fecha;
 
 
 function logout(){
@@ -257,7 +249,7 @@ db.collection(identifiertable).doc(MesyAño).collection(""+dia+"").get().then(fu
       
     });
 
-    tabla.innerHTML += `<tr><td><strong>Total</strong></td><td><span id="ey"></span></td></tr>` 
+    tabla.innerHTML += `<tr><td><strong>Total</strong></td><td colspan="2"><span id="ey"></span></td></tr>` 
    document.getElementById("ey").innerHTML = suma;
 
 
